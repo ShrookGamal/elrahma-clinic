@@ -1,3 +1,6 @@
+html{
+    scroll-behavior: smooth;
+}
 :root {
     --main-color: #0069d9; 
     --accent-color: #28a745; 
@@ -302,4 +305,147 @@ nav a:hover {
     .about img {
         width: 100%;
     }
+}
+/* ================= أزرار السوشيال ميديا الجديدة ================= */
+.social-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #555; /* خط فاصل خفيف */
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.btn-social {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    color: white !important; /* مهم عشان يغطي على لون اللينكات القديم */
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* لون زرار قناة الواتساب */
+.whatsapp-channel {
+    background-color: #25d366;
+}
+
+/* لون زرار الفيسبوك */
+.facebook-page {
+    background-color: #1877f2;
+}
+
+/* تأثير لما الماوس ييجي عليهم */
+.btn-social:hover {
+    transform: translateY(-5px); /* يطلع لفوق شوية */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+
+/* تظبيط للموبايل */
+@media (max-width: 768px) {
+    .social-buttons {
+        flex-direction: column; /* الزراير تيجي تحت بعض في الموبايل */
+        align-items: center;
+    }
+    
+    .btn-social {
+        width: 80%; /* الزرار ياخد عرض الشاشة */
+        justify-content: center;
+    }
+}
+/* ================= تنسيقات زر القائمة (Side Menu) ================= */
+
+/* إخفاء زرار القائمة وزر الإغلاق في الكمبيوتر */
+.menu-btn, .close-btn {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--main-color);
+}
+
+/* إظهار زر الحجز الخاص بالكمبيوتر */
+.desktop-cta {
+    display: inline-block;
+}
+
+/* إخفاء زر الحجز اللي جوه القائمة في الكمبيوتر */
+.mobile-cta {
+    display: none;
+}
+
+/* ================= الموبايل (Responsive) ================= */
+@media (max-width: 768px) {
+    
+    /* 1. إظهار زرار القائمة (الهامبرجر) */
+    .menu-btn {
+        display: block;
+        order: 3; /* عشان ييجي على الشمال */
+    }
+
+    /* 2. إخفاء زر الحجز بتاع الكمبيوتر */
+    .desktop-cta {
+        display: none;
+    }
+
+    /* 3. تحويل الـ Nav لقائمة جانبية مخفية */
+    nav {
+        position: fixed;
+        top: 0;
+        right: -280px; /* مخفية بره الشاشة يمين */
+        width: 260px;
+        height: 100vh; /* طول الشاشة كلها */
+        background-color: white;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+        flex-direction: column; /* العناصر تحت بعض */
+        align-items: flex-start;
+        padding: 60px 20px 20px 20px;
+        transition: right 0.4s ease; /* نعومة الحركة */
+        z-index: 9999;
+    }
+
+    /* 4. كلاس بيتحط بالجافاسكريبت عشان يظهر القائمة */
+    nav.active {
+        right: 0; /* ترجع تظهر في الشاشة */
+    }
+
+    /* 5. زرار الإغلاق (X) */
+    .close-btn {
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 1.8rem;
+        color: #555;
+    }
+
+    /* 6. تنسيق الروابط جوه القائمة */
+    nav a {
+        margin: 15px 0;
+        font-size: 1.1rem;
+        width: 100%;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+    }
+
+    /* 7. إظهار زر الحجز جوه القائمة */
+    .mobile-cta {
+        display: inline-block;
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    /* تعديل بسيط للوجو في الموبايل */
+    .logo h1 { font-size: 1.1rem; }
+    .logo img { height: 45px; }
+    .container { flex-direction: row; } /* نرجعهم سطر واحد */
 }
