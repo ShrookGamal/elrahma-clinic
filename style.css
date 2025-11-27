@@ -449,3 +449,131 @@ nav a:hover {
     .logo img { height: 45px; }
     .container { flex-direction: row; } /* نرجعهم سطر واحد */
 }
+/* ================= تنسيق الهيدر الأساسي ================= */
+header {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 10px 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 15px;
+}
+
+/* اللوجو */
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo img { height: 50px; width: auto; border-radius: 50%; }
+.logo h1 { margin: 0; font-size: 1.2rem; color: var(--main-color); }
+
+/* القائمة العادية (للكمبيوتر) */
+nav { display: flex; align-items: center; gap: 20px; }
+nav a { text-decoration: none; color: var(--text-dark); font-weight: bold; transition: 0.3s; }
+nav a:hover { color: var(--main-color); }
+
+/* أزرار التحكم (مخفية في الكمبيوتر) */
+.menu-btn, .close-btn, .mobile-cta, .overlay { display: none; }
+.desktop-cta { display: inline-block; }
+
+/* ================= 📱 تنسيق الموبايل (السايد منيو) 📱 ================= */
+@media (max-width: 768px) {
+    
+    /* 1. تظبيط شريط الهيدر نفسه */
+    .header-container {
+        flex-direction: row; /* يخلي اللوجو والزرار جنب بعض مش فوق بعض */
+    }
+
+    /* 2. زرار الهامبرجر (الثلاث شرط) */
+    .menu-btn {
+        display: block;
+        font-size: 1.8rem;
+        color: var(--main-color);
+        cursor: pointer;
+    }
+
+    /* 3. زرار الحجز بتاع الكمبيوتر نخفيه */
+    .desktop-cta { display: none; }
+
+    /* 4. تصميم القائمة الجانبية (Sidebar) */
+    nav {
+        position: fixed;
+        top: 0;
+        right: -280px; /* مخفية بره الشاشة */
+        width: 260px; /* عرض القائمة */
+        height: 100vh; /* طول الشاشة */
+        background-color: white;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        flex-direction: column; /* العناصر تحت بعض */
+        align-items: flex-start; /* محاذاة لليمين */
+        padding: 20px;
+        transition: right 0.4s ease-in-out;
+        z-index: 2000;
+    }
+
+    /* كلاس التفعيل (لما القائمة تفتح) */
+    nav.active { right: 0; }
+
+    /* 5. زرار الإغلاق (X) */
+    .close-btn {
+        display: block;
+        align-self: flex-end; /* يروح أقصى اليسار */
+        font-size: 1.5rem;
+        color: #555;
+        margin-bottom: 30px;
+        cursor: pointer;
+        padding: 5px;
+    }
+
+    /* 6. تنسيق الروابط جوه القائمة */
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;
+    }
+
+    nav a {
+        font-size: 1.1rem;
+        border-bottom: 1px solid #f0f0f0;
+        padding-bottom: 10px;
+        width: 100%;
+        color: #333;
+    }
+
+    /* 7. زرار الحجز جوه القائمة */
+    .mobile-cta {
+        display: inline-block;
+        margin-top: 30px;
+        width: 100%;
+        text-align: center;
+        background-color: var(--main-color);
+        color: white !important; /* عشان يغطي على لون الروابط */
+        border: none;
+    }
+
+    /* 8. الخلفية المظللة (Overlay) */
+    .overlay {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1500; /* تحت القائمة بس فوق الموقع */
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s;
+    }
+
+    .overlay.active {
+        opacity: 1;
+        visibility: visible;
+        display: block;
+    }
+}

@@ -10,37 +10,43 @@
     </head>
 <body>
     <header>
-        <div class="container">
-            <!-- اللوجو -->
-            <div class="logo">
-                <img src="images/562356152_835867892288435_3439607930458144395_n.jpg" alt="">
-                <h1>عيادات الرحمة</h1>
+    <div class="container header-container">
+        <!-- اللوجو -->
+        <div class="logo">
+            <img src="images/562356152_835867892288435_3439607930458144395_n.jpg" alt="لوجو العيادة">
+            <h1>عيادات الرحمة</h1>
+        </div>
+
+        <!-- زرار فتح القائمة (يظهر فقط في الموبايل) -->
+        <div class="menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <!-- القائمة الجانبية -->
+        <nav id="nav-menu">
+            <!-- زرار إغلاق القائمة (X) -->
+            <div class="close-btn" onclick="toggleMenu()">
+                <i class="fas fa-times"></i>
             </div>
 
-            <!-- زرار فتح القائمة (يظهر فقط في الموبايل) -->
-            <div class="menu-btn" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </div>
-
-            <!-- القائمة (الروابط + زر الحجز) -->
-            <nav id="nav-menu">
-                <!-- زرار إغلاق القائمة (X) -->
-                <div class="close-btn" onclick="toggleMenu()">
-                    <i class="fas fa-times"></i>
-                </div>
-
-                <a href="#stats" onclick="toggleMenu()">من نحن</a>
+            <!-- الروابط -->
+            <div class="nav-links">
+                <a href="#about" onclick="toggleMenu()">من نحن</a>
                 <a href="#vision" onclick="toggleMenu()">رؤيتنا</a>
                 <a href="#contact" onclick="toggleMenu()">اتصل بنا</a>
-                
-                <!-- نقلنا زر الحجز جوه القائمة في الموبايل عشان الشكل -->
-                <a href="tel:01004665241" class="cta-btn mobile-cta">احجز الآن <i class="fas fa-phone"></i></a>
-            </nav>
+            </div>
 
-            <!-- زر الحجز (يظهر في الكمبيوتر فقط) -->
-            <a href="tel:01004665241" class="cta-btn desktop-cta">احجز الآن <i class="fas fa-phone"></i></a>
-        </div>
-    </header>
+            <!-- زر حجز الموبايل (جوه القائمة) -->
+            <a href="tel:01004665241" class="cta-btn mobile-cta">احجز الآن <i class="fas fa-phone"></i></a>
+        </nav>
+
+        <!-- زر حجز الكمبيوتر (بره القائمة) -->
+        <a href="tel:01004665241" class="cta-btn desktop-cta">احجز الآن <i class="fas fa-phone"></i></a>
+    </div>
+</header>
+
+<!-- خلفية سوداء شفافة تظهر لما القائمة تفتح (اختياري للشياكة) -->
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
     <section class="hero">
         <div class="slogan">بالرحمة نترك أثراً</div>
         <h2>خدمة طبية بجودة عالية وأسعار مناسبة</h2>
@@ -120,10 +126,13 @@
         <i class="fab fa-whatsapp"></i>
     </a>
     <script>
-        function toggleMenu() {
-            const nav = document.getElementById('nav-menu');
-            nav.classList.toggle('active');
-        }
+    function toggleMenu() {
+        const nav = document.getElementById('nav-menu');
+        const overlay = document.getElementById('overlay');
+        
+        nav.classList.toggle('active');
+        overlay.classList.toggle('active');
+    }
     </script>
 </body>
 </body>
